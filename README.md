@@ -1,35 +1,81 @@
-# Advent-of-Code
-My solutions for Advent of Code, organized by year.
+# Advent of Code – Rust Solutions
+
+Personal solutions for the Advent of Code challenges, organized by year and executed through a single runner binary.
+
+---
 
 ## Usage
 
-The project exposes a single binary that runs the solution for a specific Advent of Code **year** and **day**.
+The binary accepts two parameters:
 
-You must provide two parameters:
+| Flag           | Meaning                                | Example   |
+| -------------- | -------------------------------------- | --------- |
+| `--year`, `-y` | Target Advent of Code year             | `-y 2024` |
+| `--day`, `-d`  | Target day (1–25). Accepts `1` or `01` | `-d 1`    |
 
-* `--year` or `-y` → the target year
-* `--day` or `-d` → the target day
+Internally, days are formatted as two digits, so both `1` and `01` work.
 
-### Running with Cargo
+---
 
-When running through Cargo, arguments must be passed **after** `--` (this tells Cargo to stop parsing flags and forward them to your binary):
+## Running with Cargo
+
+Arguments to your binary must come after `--`:
 
 ```bash
 cargo run -- -y 2024 -d 1
-```
-
-### Running the compiled binary directly
-
-```bash
-./target/release/advent_of_code -y 2024 -d 1
 ```
 
 ### Example
 
-Run the solution for **Day 01 of 2024**:
+Run **Day 01 – Year 2024**:
 
 ```bash
 cargo run -- -y 2024 -d 1
 ```
 
-If the year/day exist, the runner loads the corresponding module and executes the solution.
+---
+
+## Running the compiled binary
+
+Build in release mode:
+
+```bash
+cargo build --release
+```
+
+Execute the binary:
+
+```bash
+./target/release/advent-of-code -y 2024 -d 1
+```
+
+---
+
+## Input files
+
+Puzzle inputs must follow this layout:
+
+```
+inputs/y{year}/{day}.txt
+```
+
+Where:
+
+| Component | Description       | Example     |
+|-----------| ----------------- |-------------|
+| `{year}`  | Four-digit year   | `y2024`     |
+| `{day}`   | Day in one or two digits | `01` or `1` |
+
+Example:
+
+```
+inputs/y2024/01.txt
+```
+
+or
+
+```
+inputs/y2024/1.txt
+```
+
+---
