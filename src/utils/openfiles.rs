@@ -1,16 +1,14 @@
-use std::path::PathBuf;
 use std::fs;
+use std::path::PathBuf;
 
-pub fn open_input(year: u16, day: u8) -> String {
+
+pub fn open_input(year: u16, day: u8) -> Result<String, std::io::Error> {
   let day_str = format!("{:02}", day);
   
-  // Inputs path
   let mut path = PathBuf::from("inputs");
   path.push(format!("y{}", year));
   path.push(format!("{}.txt", day_str));
   
-  fs::read_to_string(&path)
-	.unwrap_or_else(|e| panic!(
-	  "Failed to read input file for year {} day {}: {:?} (error: {})",
-	  year, day, path, e))
+  
+  fs::read_to_string(path)
 }
