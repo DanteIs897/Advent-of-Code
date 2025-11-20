@@ -1,10 +1,16 @@
-pub mod day_01;
+mod day01;
+mod day02;
+mod day03;
+mod day04;
 
 use crate::errors::AocError;
 
 pub fn run_day(day: u8) -> Result<(), AocError> {
   let result = match day {
-	1 => day_01::run()?,
+	1 => day01::run()?,
+	2 => day02::run()?,
+	3 => day03::run()?,
+	4 => day04::run()?,
 	_ => return Err(AocError::Unsupported),
   };
   
